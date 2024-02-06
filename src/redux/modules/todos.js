@@ -1,6 +1,15 @@
 // import uuid from "react-uuid";
 import shortid from "shortid";
 
+export const ADD_TODO = "ADD_TODO";
+
+export const addTodo = (payload) => {
+  return {
+    type: ADD_TODO,
+    payload,
+  };
+};
+
 const initialState = [
   {
     id: shortid.generate(),
@@ -14,7 +23,8 @@ const initialState = [
 const todos = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return; //TODO: 여기 작성
+      const newTodo = action.payload;
+      return { newTodo, ...state };
 
     case "DELETE_TODO":
       return; //TODO: 여기 작성
